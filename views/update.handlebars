@@ -1,0 +1,25 @@
+<h3>{{post.user.username}}'s Post</h3>
+<div class="card m-2">
+    <div class="card-header">
+        {{post.user.username}} posted on {{format_date post.date_created}}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{post.title}}</h5>
+        <p class="card-text">{{post.text}}</p>
+    </div>
+</div>
+<br/>
+<h4>Update Post</h4>
+<p>Post ID: <span id="post-id">{{post.id}}</span></p>
+<form id="update-post" class="mt-2">
+  <div class="form-group">
+    <label for="title-update">Post Title</label>
+    <input type="text" class="form-control" id="title-update">
+  </div>
+  <div class="form-group">
+    <label for="text-update">Post Text</label>
+    <textarea class="form-control" id="text-update" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<script src="/js/update.js"></script>

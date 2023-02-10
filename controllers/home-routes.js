@@ -55,6 +55,34 @@ router.get('/post/:id', async (req, res) => {
     }
 });
 
+router.get('/post/update/:id', async (req, res) => {
+    try {
+        const dbPostData = await Post.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['username', 'id']
+                },
+            ],
+        });
+        if(!dbPostData){
+            res.redirect('/dashboard');
+            return
+        }
+        const post = dbPostData.get({ plain: true });
+        if(post.user.id === req.session.user_id) {
+            res.render('update', {
+                post,
+                logged_in: req.session.logged_in,
+            });
+        } else {
+            res.redirect('/dashboard');
+        }
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const dbPostData = await Post.findAll({
