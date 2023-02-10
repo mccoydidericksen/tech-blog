@@ -11,11 +11,11 @@ const commentFormHandler = async (event) => {
         body: JSON.stringify({ comment, post_id }),
         headers: { 'Content-Type': 'application/json' },
       });
-  
-      if (response.ok) {
+      
+      if (!response.url.includes('login')) {
         document.location.replace(window.location.href);
       } else {
-        alert('Failed to create post.');
+        document.location.replace('/login');
       }
     }
   };
