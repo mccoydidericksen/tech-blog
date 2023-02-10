@@ -1,0 +1,17 @@
+[
+    {
+        "comment": "I was amazed at how much easier querying data was after I learned this!",
+        "post_id": 1,
+        "user_id": 1
+    },
+    {
+        "comment": "I just learned about this in class!",
+        "post_id": 2,
+        "user_id": 2
+    },
+    {
+        "comment": "I totally agree!",
+        "post_id": 2,
+        "user_id": 2
+    }
+]

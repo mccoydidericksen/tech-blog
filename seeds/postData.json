@@ -1,0 +1,12 @@
+[
+    {
+        "title": "Object-Relational Mapping",
+        "text": "Using an ORM speeds up development time for teams, decreases the cost of development, and reduces the amount of SQL code that needs to be written. ORMs also allow developers to focus on the business logic of the application, rather than the database logic.",
+        "user_id": 1
+    },
+    {
+        "title": "What is the JavaScript MVC Architecture?",
+        "text": "In the development process of object-oriented programming, model-view-controller (MVC) is a methodology or design pattern that helps you in relating the user interface to underlying data models efficiently and successfully.",
+        "user_id": 2
+    }
+]
