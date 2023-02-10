@@ -28,24 +28,32 @@ router.get('/post/:id', async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['username'],
-                },
-                {
-                    model: Comment,
-                    attributes: ['id', 'comment', 'date_created', 'post_id', 'user_id'],
-                    include: {
-                        model: User,
-                        attributes: ['username'],
-                    },
+                    attributes: ['username']
                 },
             ],
         });
+        const dbCommentData = await Comment.findAll({
+            where: {
+                post_id: req.params.id,
+            },
+            include: [
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+            ],
+        });
+        const comments = dbCommentData.map((comment) => comment.get({ plain: true }));
         const post = dbPostData.get({ plain: true });
+        console.log(post);
+        console.log(comments);
         res.render('post', {
             post,
+            comments,
             logged_in: req.session.logged_in,
         });
     } catch (err) {
+        console.log(err);
         res.status(500).json(err);
     }
 });
