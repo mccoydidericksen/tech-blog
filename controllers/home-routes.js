@@ -45,15 +45,12 @@ router.get('/post/:id', async (req, res) => {
         });
         const comments = dbCommentData.map((comment) => comment.get({ plain: true }));
         const post = dbPostData.get({ plain: true });
-        console.log(post);
-        console.log(comments);
         res.render('post', {
             post,
             comments,
             logged_in: req.session.logged_in,
         });
     } catch (err) {
-        console.log(err);
         res.status(500).json(err);
     }
 });
@@ -88,6 +85,14 @@ router.get('/login', (req, res) => {
         return;
     }
     res.render('login');
+});
+
+router.get('/signup', (req, res) => {
+    if (req.session.logged_in) {
+        res.redirect('/dashboard');
+        return;
+    }
+    res.render('signup');
 });
 
 module.exports = router;
